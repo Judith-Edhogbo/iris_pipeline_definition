@@ -1,0 +1,11 @@
+{
+      "PIPELINE_NAME":"script_test",
+       "GITHUB_URL":"https://github.com/Judith-Edhogbo/Jenkins_pipeline-automation.git",
+       "GITHUB_URL2":"https://github.com/Judith-Edhogbo/iris_pipeline_definition.git",
+       "VARIABLES":{
+        "BLOB_VECTORIZER":"vectorizer/log_sent_vectorizer_${BUILD_NUMBER}.vec",
+        "BLOB_MODEL" : "model/rf_model_${BUILD_NUMBER}.model",
+        "BLOB_MODEL2" : "model/rf_model_${BUILD_NUMBER}.model"
+       }
+ }
+  
