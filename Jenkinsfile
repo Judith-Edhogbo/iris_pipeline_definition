@@ -13,10 +13,6 @@ pipeline {
         	sh '''
 	 	      rm -f $PIPELINE.groovy
 		      gcloud storage cp gs://jenkins-pipeline-test/envirinment/$PIPELINE.groovy $PIPELINE.groovy
-  		    envsubst < $PIPELINE.groovy >> test.groovy
-    		  rm $PIPELINE.groovy		
-      		cp test.groovy $PIPELINE.groovy
-      		rm -rf test.groovy
       		'''
           }
         } 
