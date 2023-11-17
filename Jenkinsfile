@@ -39,9 +39,9 @@ pipeline {
         steps{
           sh '''
           rm -rf temp.json
-	        echo $VAR_STRING_TRAIN >> temp.json   	
+	        echo $params.VAR_STRING_TRAIN >> temp.json   	
 	 	cat temp.json
-   	      for t in $KEYS_TRAIN; do
+   	      for t in $params.KEYS_TRAIN; do
 	        sed -i s+$t+"$( jq .${t} temp.json)"+g app.py
 	        done
 	        rm -rf temp.json
