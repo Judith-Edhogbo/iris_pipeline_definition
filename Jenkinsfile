@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-	   VAR_STRING_TRAIN = "$params.VAR_STRING_TRAIN"
-           KEYS_TRAIN = "$params.KEYS_TRAIN"
+	   TRAIN_NUMBER = "$params.TRAIN_NUMBER"
             PIPELINE= sh (
                 script: 'echo "$JOB_NAME" | sed  -e "s/"_deploy"//"',
                 returnStdout: true
@@ -41,13 +40,14 @@ pipeline {
         steps{
           sh '''
           rm -rf temp.json
-	        echo ${VAR_STRING_TRAIN} >> temp.json   	
+	        echo ${VAR_STRING} >> temp.json   	
 	 	cat temp.json
-   		echo ${KEYS_TRAIN}
-   	      for t in ${KEYS_TRAIN}; do
+   		echo ${KEYS}
+   	      for t in ${KEYS}; do
 	        sed -i s+$t+"$( jq .${t} temp.json)"+g app.py
 	        done
 	        rm -rf temp.json
+	 sed -i s+'${BUILD_NUMBER}'+${TRAIN_NUMBER}+g app.py
           cat app.py
 	  
           '''
