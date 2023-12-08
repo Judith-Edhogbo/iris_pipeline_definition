@@ -44,7 +44,6 @@ pipeline {
 	        done
 	        rm -rf temp.json
 	 sed -i s+'${BUILD_NUMBER}'+${TRAIN_NUMBER}+g app.py
-          cat app.py
 	  
           '''
         }
